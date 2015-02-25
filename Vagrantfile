@@ -14,10 +14,6 @@ Vagrant.configure(2) do |config|
   # boxes at https://atlas.hashicorp.com/search.
   config.vm.box = "ubuntu/trusty64"
 
-	config.vm.provision "puppet" do |puppet|
-        puppet.options = "--verbose --debug"
-        puppet.module_path ="~/.puppet/modules"
-    end
 
   # Disable automatic box update checking. If you disable this, then
   # boxes will only be checked for updates when the user runs
@@ -31,7 +27,7 @@ Vagrant.configure(2) do |config|
 
   # Create a private network, which allows host-only access to the machine
   # using a specific IP.
-  config.vm.network "private_network", ip: "192.168.50.10"
+  # config.vm.network "private_network", ip: "192.168.50.10"
 
   # Create a public network, which generally matched to bridged network.
   # Bridged networks make the machine appear as another physical device on
@@ -63,9 +59,6 @@ Vagrant.configure(2) do |config|
    end
 	   # Step 2: Attach the HD to the storage controller
 	   vb.customize ['storageattach', :id, '--storagectl', 'SATAController', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', file_to_disk]
-	
-
-  
   end
   #
   # View the documentation for the provider you are using for more
